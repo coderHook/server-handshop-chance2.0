@@ -29,7 +29,10 @@ router.post('/advertisements', (req, res,next) => {
   //   phone: 26751
   //   }
 
+  // http post https://second-handshop.herokuapp.com/advertisements title="TEST TEST" picture="https://picsum.photos/id/1/200" description="amet, consectetur adipiscing elit, " price=0.31642592 email="test@test.com" phone=26751
+
   console.log('teq.body', req.body)
+  
   Advertisement
     .create(req.body)
     .then(newAd => {
