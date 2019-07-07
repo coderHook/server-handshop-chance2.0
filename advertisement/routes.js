@@ -42,12 +42,14 @@ router.post('/advertisements', (req, res,next) => {
 
 })
 
-router.delete('/advertisements', (req, res, next) => {
-  const id = req.body.id
+router.delete('/advertisements/:id', (req, res, next) => {
+  const id = req.params.id
+
+  console.log(id)
 
   Advertisement
     .destroy({ where: {id}})
-    .then(AdDeleted => res.status(200).send(AdDeleted))
+    .then(adDeleted => res.status(200).send(`Deleted ad ${id}`))
     .catch(err => next(err))
 })
 
