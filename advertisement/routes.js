@@ -42,5 +42,14 @@ router.post('/advertisements', (req, res,next) => {
 
 })
 
+router.delete('/advertisements', (req, res, next) => {
+  const id = req.body.id
+
+  Advertisement
+    .destroy({ where: {id}})
+    .then(AdDeleted => res.status(200).send(AdDeleted))
+    .catch(err => next(err))
+})
+
 
 module.exports = router
