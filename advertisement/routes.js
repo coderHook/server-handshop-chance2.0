@@ -30,7 +30,7 @@ router.get('/advertisements/:id', (req, res, next) => {
 
 router.put('/advertisements/:id', (req, res, next) => {
   const id = req.params.id
-  const editAd = req.body.editAd
+  const editAd = req.body
 
   console.log("console.log", editAd)
 
