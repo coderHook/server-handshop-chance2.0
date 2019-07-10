@@ -32,11 +32,18 @@ router.put('/advertisements/:id', (req, res, next) => {
   const id = req.params.id
   const editAd = req.body.editAd
 
+  console.log("console.log", editAd)
+
   Advertisement
     .findByPk(id)
     .then(ad => {
       ad.update(editAd)
-      res.status(200).send({message: "Update OK", ad})
+        .then(updated => res
+          .status(200)
+          .send({
+            message: "Update OK", 
+            updated
+          }))
     })
     .catch(next)
 })
