@@ -10,6 +10,16 @@ router.get('/advertisements', (req, res, next) => {
     .catch(err => next(err))
 })
 
+router.post('/advertisements', (req, res,next) => {
+  
+  Advertisement
+    .create(req.body)
+    .then(newAd => {
+      res.status(200).send(newAd)
+    })
+    .catch(err => next(err))
+})
+
 router.get('/advertisements/:id', (req, res, next) => {
   const id = req.params.id;
   Advertisement
@@ -18,28 +28,17 @@ router.get('/advertisements/:id', (req, res, next) => {
     .catch(err => next(err))
 })
 
-router.post('/advertisements', (req, res,next) => {
+router.put('/advertisements/:id', (req, res, next) => {
+  const id = req.params.id
+  const editAd = req.body.editAd
 
-  // const test = {
-  //   title: "TEST TEST",
-  //   picture: "https://picsum.photos/id/1/200",
-  //   description: "amet, consectetur adipiscing elit, ",
-  //   price: 0.31642592,
-  //   email: "test@test.com",
-  //   phone: 26751
-  //   }
-
-  // http post https://second-handshop.herokuapp.com/advertisements title="TEST TEST" picture="https://picsum.photos/id/1/200" description="amet, consectetur adipiscing elit, " price=0.31642592 email="test@test.com" phone=26751
-
-  console.log('teq.body', req.body)
-  
   Advertisement
-    .create(req.body)
-    .then(newAd => {
-      res.status(200).send(newAd)
+    .findByPk(id)
+    .then(ad => {
+      ad.update(editAd)
+      res.status(200).send({message: "Update OK", ad})
     })
-    .catch(err => next(err))
-
+    .catch(next)
 })
 
 router.delete('/advertisements/:id', (req, res, next) => {
