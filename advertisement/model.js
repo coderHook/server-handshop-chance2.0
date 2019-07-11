@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
+const User = require('../user/model')
 
 const Advertisement = db.define(
   'advertisement',
@@ -36,5 +37,7 @@ const Advertisement = db.define(
     tableName: 'Advertisements'
   }
 )
+
+Advertisement.belongsTo(User)
 
 module.exports = Advertisement
