@@ -1,23 +1,29 @@
 const Router = require('express')
 const Advertisement = require('./model')
+const auth = require('./../middlewares/auth.middleware.js')
 
 const router = new Router()
 
 router.get('/advertisements', (req, res, next) => {
+
   Advertisement
     .findAll()
     .then(advertisement => res.status(200).send(advertisement))
     .catch(err => next(err))
 })
 
-router.post('/advertisements', (req, res,next) => {
-  
+
+router.post('/advertisements', auth, (req, res,next) => {
+  // const { username } = req.user
+  console.log('Server, ads user', req.user.dataValues)
+  const { id } = req.user.dataValues
   Advertisement
-    .create(req.body)
+    .create({...req.body, userId: id})
     .then(newAd => {
       res.status(200).send(newAd)
     })
     .catch(err => next(err))
+
 })
 
 router.get('/advertisements/:id', (req, res, next) => {

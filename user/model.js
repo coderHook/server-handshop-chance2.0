@@ -4,7 +4,7 @@ const Advertisement = require('../advertisement/model')
 
 const User = db.define(
   'user', {
-    name: {
+    username: {
       type: Sequelize.STRING,
       allowNull: false
     },
