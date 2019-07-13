@@ -12,7 +12,11 @@ const userRoutes = require('./user/routes')
 const app = express()
 const jsonParser = bodyParser.json()
 
-app.use(cors())
+var corsOptions = {
+  origin: '*'
+};
+
+app.use(cors(corsOptions))
 app.use(jsonParser)
 app.use(advertisementRoutes)
 app.use(userRoutes)
