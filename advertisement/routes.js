@@ -12,18 +12,15 @@ router.get('/advertisements', (req, res, next) => {
     .catch(err => next(err))
 })
 
-
 router.post('/advertisements', auth, (req, res,next) => {
-  // const { username } = req.user
-  console.log('Server, ads user', req.user.dataValues)
   const { id } = req.user.dataValues
+
   Advertisement
     .create({...req.body, userId: id})
     .then(newAd => {
       res.status(200).send(newAd)
     })
     .catch(err => next(err))
-
 })
 
 router.get('/advertisements/:id', (req, res, next) => {
@@ -37,8 +34,6 @@ router.get('/advertisements/:id', (req, res, next) => {
 router.put('/advertisements/:id', (req, res, next) => {
   const id = req.params.id
   const editAd = req.body
-
-  console.log("console.log", editAd)
 
   Advertisement
     .findByPk(id)
@@ -57,13 +52,10 @@ router.put('/advertisements/:id', (req, res, next) => {
 router.delete('/advertisements/:id', (req, res, next) => {
   const id = req.params.id
 
-  console.log(id)
-
   Advertisement
     .destroy({ where: {id}})
     .then(adDeleted => res.status(200).send(`Deleted ad ${id}`))
     .catch(err => next(err))
 })
-
 
 module.exports = router
