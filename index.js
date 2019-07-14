@@ -20,11 +20,6 @@ app.use(cors(corsOptions))
 app.use(jsonParser)
 app.use(advertisementRoutes)
 app.use(userRoutes)
-app.use(function(err, req, res, next) {
-  if(401 == err.status) {
-      res.redirect('/home')
-  }
-});
 
 const port = process.env.PORT || 5000
 app.listen(port, () => console.log(`Listening on port ${port}`))

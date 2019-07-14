@@ -23,7 +23,7 @@ router.post('/advertisements', auth, (req, res,next) => {
     .catch(err => next(err))
 })
 
-router.get('/advertisements/:id', (req, res, next) => {
+router.get('/advertisements/:id', auth, (req, res, next) => {
   const id = req.params.id;
   Advertisement
     .findByPk(id)
@@ -31,7 +31,7 @@ router.get('/advertisements/:id', (req, res, next) => {
     .catch(err => next(err))
 })
 
-router.put('/advertisements/:id', (req, res, next) => {
+router.put('/advertisements/:id', auth, (req, res, next) => {
   const id = req.params.id
   const editAd = req.body
 
@@ -49,7 +49,7 @@ router.put('/advertisements/:id', (req, res, next) => {
     .catch(next)
 })
 
-router.delete('/advertisements/:id', (req, res, next) => {
+router.delete('/advertisements/:id', auth, (req, res, next) => {
   const id = req.params.id
 
   Advertisement
