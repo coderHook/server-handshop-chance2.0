@@ -1,7 +1,9 @@
 # server-handshop-chance2.0
 
-Server: https://second-handshop.herokuapp.com/
-github(this): https://github.com/coderHook/server-handshop-chance2.0
+## Links
 
-Client: https://second-handshop-client.herokuapp.com/
-github: https://github.com/coderHook/chat-app-client
+<strong>Server:</strong> https://second-handshop.herokuapp.com/ <br>
+<strong>github(this):</strong> https://github.com/coderHook/server-handshop-chance2.0
+
+<strong>Client:</strong>: https://second-handshop-client.herokuapp.com/ <br>
+<strong>github(this):</strong> https://github.com/coderHook/client-second-handshop2.0
