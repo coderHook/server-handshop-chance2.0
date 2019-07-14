@@ -23,7 +23,7 @@ router.post('/advertisements', auth, (req, res,next) => {
     .catch(err => next(err))
 })
 
-router.get('/advertisements/:id', auth, (req, res, next) => {
+router.get('/advertisements/:id', (req, res, next) => {
   const id = req.params.id;
   Advertisement
     .findByPk(id)
